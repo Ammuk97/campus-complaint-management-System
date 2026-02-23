@@ -1,0 +1,158 @@
+//this is my code for front page which is the login page
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Campus Management System - Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url("https://images.unsplash.com/photo-1562774053-701939374585") no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            width: 420px;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        .captcha-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .captcha-text {
+            font-size: 20px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            background: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .refresh-btn {
+            cursor: pointer;
+            font-size: 14px;
+            color: #355c9c;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #355c9c;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2a4a80;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-container">
+    <h2>Campus Management System</h2>
+
+    <form onsubmit="return validateCaptcha()">
+
+        <label>Registration Number</label>
+        <input type="text" placeholder="Enter Registration Number" required>
+
+        <label>Password</label>
+        <input type="password" placeholder="Enter Password" required>
+
+        <label>Enter CAPTCHA</label>
+        <input type="text" id="captchaInput" placeholder="Enter Captcha" required>
+
+        <div class="captcha-box">
+            <div class="captcha-text" id="captcha"></div>
+            <div class="refresh-btn" onclick="generateCaptcha()">Refresh</div>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <div class="error" id="errorMsg"></div>
+    </form>
+</div>
+
+<script>
+    let captchaCode = "";
+
+    function generateCaptcha() {
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        captchaCode = "";
+        for (let i = 0; i < 5; i++) {
+            captchaCode += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        document.getElementById("captcha").innerText = captchaCode;
+    }
+
+    function validateCaptcha() {
+        const userInput = document.getElementById("captchaInput").value;
+
+        if (userInput !== captchaCode) {
+            document.getElementById("errorMsg").innerText = "Invalid CAPTCHA! Please try again.";
+            generateCaptcha();
+            return false;
+        }
+
+        alert("Login Successful!");
+        return true;
+    }
+
+    // Generate captcha when page loads
+    generateCaptcha();
+</script>
+
+</body>
+</html>
+
+
+
+i have also added captcha  as a security measure to distinguish human users from automated software, or bots.
+this campus complaint management helps students and faculties to make things easier.
