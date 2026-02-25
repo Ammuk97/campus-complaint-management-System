@@ -141,8 +141,9 @@
             return false;
         }
 
-        alert("Login Successful!");
-        return true;
+       alert("Login Successful!");
+window.location.href = "second.html"; // redirect
+return false; // stop form reload
     }
 
     // Generate captcha when page loads
