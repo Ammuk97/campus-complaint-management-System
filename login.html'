@@ -155,5 +155,7 @@ return false; // stop form reload
 
 
 
-i have also added captcha  as a security measure to distinguish human users from automated software, or bots.
+// i have also added captcha  as a security measure to distinguish human users from automated software, or bots.
 this campus complaint management helps students and faculties to make things easier.
+// now we have added admin panel and other details it has became more effective for users and admin.
+// since our page is anonymous, it will help with privacy and security part also
